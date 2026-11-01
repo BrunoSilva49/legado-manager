@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#102a25">
+  <title>Football Manager Híbrido</title>
+  <style>
+:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#1b2822;background:#f4f6f2;font-synthesis:none;text-rendering:optimizeLegibility;--green:#174937;--lime:#c8e986;--muted:#748078}*{box-sizing:border-box}body{margin:0;min-width:320px;min-height:100dvh}button,input,select{font:inherit}button{cursor:pointer}.shell{max-width:720px;margin:auto;padding:calc(25px + env(safe-area-inset-top)) 18px calc(32px + env(safe-area-inset-bottom))}.top{display:flex;align-items:center;gap:13px}.brand-mark{width:49px;height:49px;display:grid;place-items:center;border-radius:15px;background:var(--green);color:var(--lime);font-weight:950;font-size:20px;letter-spacing:-1px}.eyebrow{font-size:10px;letter-spacing:.14em;font-weight:850;color:#75847b;margin:0 0 6px}.top h1{font-size:clamp(22px,6vw,29px);letter-spacing:-.045em;margin:0;color:#17271f}.intro{max-width:600px;color:#5b6960;line-height:1.55;margin:19px 0 22px;font-size:14px}.panel{background:#fff;border:1px solid #e4e9e3;border-radius:18px;padding:20px;margin:14px 0;box-shadow:0 7px 24px #14251e08}.panel h2{font-size:20px;letter-spacing:-.035em;margin:0 0 10px}.hero{background:linear-gradient(145deg,#173e32,#235c43);color:white;padding:25px}.hero .eyebrow{color:#b8d1be}.hero h2{font-size:27px;max-width:350px}.hero>p:not(.eyebrow){color:#d8e5dc;font-size:14px;line-height:1.5}.field-label{display:block;font-size:12px;margin:18px 0 6px;color:#d8e5dc}.hero input{width:100%;height:46px;border-radius:11px;border:1px solid #ffffff55;background:#ffffff12;color:white;padding:0 13px;outline:none}.hero input::placeholder{color:#c3d2c7}.primary{min-height:48px;border:0;border-radius:12px;background:var(--green);color:white;font-weight:780;padding:0 17px}.primary span{float:right;font-size:20px}.wide{width:100%;margin-top:12px}.hero .primary{background:var(--lime);color:#163629}.section-title{display:flex;justify-content:space-between;align-items:center}.section-title h2{margin:0;font-size:19px}.count{background:#eaf4df;color:#3c622d;padding:6px 10px;border-radius:99px;font-weight:850;font-size:12px}.save-list{padding:0;margin:15px 0 0;list-style:none}.save-list li{padding:13px 0;border-top:1px solid #edf0ed;display:flex;justify-content:space-between;align-items:center;gap:12px}.save-list li:first-child{border-top:0}.save-list b{font-size:13px}.save-list small{display:block;color:#7b867f;margin-top:4px;font-size:11px}.row-actions{display:flex;gap:7px}.row-actions button{border:1px solid #dce4dd;background:white;color:#264438;border-radius:9px;padding:8px 10px;font-size:12px;font-weight:700}.row-actions .danger{color:#a43b35;border-color:#f0d9d7}.muted{color:#6c7971;font-size:13px}.notice{padding:11px 13px;border-radius:11px;background:#eaf4e7;color:#2d5534;font-size:13px;line-height:1.4;margin:12px 0}.shell footer{padding:12px 2px;color:#7e8982;font-size:11px}
+.game-shell{max-width:680px;margin:auto;min-height:100dvh;padding:calc(15px + env(safe-area-inset-top)) 16px calc(93px + env(safe-area-inset-bottom));}.game-header{display:flex;justify-content:space-between;align-items:center;padding:4px 2px 12px}.game-header h1{font-size:25px;letter-spacing:-.04em;margin:0}.save-icon{border:1px solid #dce4dd;color:#365044;background:white;border-radius:10px;padding:9px 12px;font-weight:750;font-size:12px}.season-strip{display:flex;justify-content:space-between;gap:6px;background:#e9eee8;border-radius:11px;padding:10px 12px;color:#57665c;font-size:11px;font-weight:750}.game-shell>.notice{margin:10px 0}.game-content{padding:4px 0 12px}.welcome{display:flex;justify-content:space-between;align-items:center;padding:19px 5px 13px}.welcome h2{margin:0;letter-spacing:-.04em;font-size:23px}.weather{font-size:27px}.dashboard-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.dashboard-stats>div{background:#fff;border:1px solid #e4e9e3;border-radius:14px;padding:12px 10px;display:flex;flex-direction:column;gap:3px}.dashboard-stats small{font-weight:850;color:#819087;font-size:9px;letter-spacing:.11em}.dashboard-stats b{font-size:22px;color:#193a2c}.dashboard-stats span{font-size:10px;color:#7b887f}.section-block{margin-top:21px}.section-title h3{margin:0;font-size:17px;letter-spacing:-.025em}.match-card{border-radius:16px;background:linear-gradient(140deg,#153c31,#255d43);color:white;margin-top:11px;padding:15px}.match-meta{font-size:9px;letter-spacing:.12em;color:#b6d0bd;font-weight:850}.versus{display:grid;grid-template-columns:1fr 38px 1fr;align-items:center;text-align:center;gap:6px;padding:19px 0 15px}.versus>div{display:flex;align-items:center;justify-content:center;gap:8px;flex-direction:column}.versus b{font-size:13px}.versus strong{font-size:12px;color:#bbd18f}.club-crest{width:42px;height:42px;border-radius:14px;background:#ffffff1d;border:1px solid #ffffff44;display:grid;place-items:center;color:#d8efad;font-size:12px;font-weight:900}.match-bottom{border-top:1px solid #ffffff2b;padding-top:10px;display:flex;justify-content:space-between;font-size:11px;color:#d5e1d7}.tactic-panel{background:white;border:1px solid #e4e9e3;border-radius:15px;padding:15px;margin-top:18px}.select-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}.select-row label{font-size:10px;color:#758078;font-weight:750}.select-row select{display:block;width:100%;margin-top:5px;padding:10px;border:1px solid #e2e8e1;background:#f7f9f6;color:#26372e;border-radius:10px;font-size:12px}.advance{margin-top:17px}.advance:disabled{opacity:.55}.small-note{color:#828d85;font-size:10px;line-height:1.45;margin:9px 2px}.page-heading{padding:17px 3px 8px}.page-heading h2{font-size:25px;letter-spacing:-.04em;margin:0 0 4px}.page-heading>p:last-child{font-size:12px;color:#768279;margin:0}.squad-list,.table-wrap,.round-block{background:#fff;border:1px solid #e4e9e3;border-radius:15px;overflow:hidden}.player-row{display:grid;grid-template-columns:29px 40px 1fr 34px;align-items:center;gap:9px;padding:12px;border-bottom:1px solid #edf0ed}.player-row:last-child{border-bottom:0}.player-number{font-size:10px;color:#9aa49c;font-weight:800}.position-chip{padding:6px 5px;background:#eaf3e8;border-radius:8px;text-align:center;color:#36583c;font-size:10px;font-weight:850}.player-info b{font-size:13px}.player-info small{display:block;color:#849087;font-size:10px;margin-top:3px}.rating{background:#edf5df;color:#3d612e;border-radius:9px;padding:6px 5px;text-align:center;font-size:13px}.table-wrap{overflow-x:auto;margin-top:8px}.table-wrap table{width:100%;border-collapse:collapse;min-width:360px;text-align:center;font-size:11px}.table-wrap th{background:#f4f7f2;color:#738077;font-size:9px;letter-spacing:.05em;padding:11px 5px}.table-wrap td{padding:12px 5px;border-top:1px solid #edf0ed}.table-wrap td:nth-child(2),.table-wrap th:nth-child(2){text-align:left}.table-wrap tr.my-row{background:#f0f7e5;color:#23472e}.round-block{margin:12px 0;padding:13px}.round-block h3{font-size:13px;margin:0 0 9px;color:#315341}.fixture-row{display:grid;grid-template-columns:1fr 52px 1fr;align-items:center;gap:5px;padding:9px 0;border-top:1px solid #edf0ed;font-size:11px}.fixture-row span:first-child{text-align:right}.fixture-row span:last-child{text-align:left}.fixture-row b{text-align:center;color:#305a40}.success{background:#f0f7e5;padding:15px;border-radius:14px;margin-top:12px}.success p{font-size:12px;color:#647267;margin-bottom:0}.bottom-nav{position:fixed;z-index:10;bottom:0;left:50%;transform:translateX(-50%);width:min(680px,100%);display:grid;grid-template-columns:repeat(4,1fr);padding:8px 7px calc(8px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid #e3e9e2;box-shadow:0 -5px 20px #14251e0a}.bottom-nav button{background:none;border:0;color:#87928a;font-size:9px;font-weight:750;display:flex;flex-direction:column;gap:3px;align-items:center;padding:4px}.bottom-nav button span{font-size:20px;line-height:21px}.bottom-nav button.active{color:#24543a}@media(min-width:600px){.game-shell{padding-top:26px}.game-content{padding-top:10px}.bottom-nav{border-radius:16px 16px 0 0}}
+
+</style>
+</head>
+<body><div id="app"><main class="loading">Carregando a base da carreira…</main></div><script type="module">
+// src/domain/constants.js
+const SAVE_SCHEMA_VERSION = 1;
+const ATTRIBUTE_MIN = 1;
+const ATTRIBUTE_MAX = 20;
+
+const PLAYER_ATTRIBUTES = Object.freeze([
+  'finalizacao', 'passe', 'cruzamento', 'drible', 'marcacao', 'desarme',
+  'cabeceio', 'primeiroToque', 'tecnica', 'bolaParada', 'velocidade',
+  'aceleracao', 'resistencia', 'forca', 'agilidade', 'impulsao', 'decisoes',
+  'posicionamento', 'visao', 'concentracao', 'determinacao', 'equipe',
+  'lideranca', 'compostura'
+]);
+
+const PLAYER_POSITIONS = Object.freeze(['GOL', 'ZAG', 'LE', 'LD', 'VOL', 'MC', 'MEI', 'PE', 'PD', 'ATA']);
+
+
+// src/domain/factory.js
+
+function createPlayer({ id, name, age, nationality = 'Brasil', position, clubId, attributes = {}, potential = 10 }) {
+  const ratings = Object.fromEntries(PLAYER_ATTRIBUTES.map((key) => [key, attributes[key] ?? 10]));
+  return {
+    id, name, age, birthDate: null, nationality, position, clubId,
+    attributes: ratings,
+    condition: 100, morale: 50, potential,
+    contract: { expiresOn: null, weeklyWage: 0 },
+    status: { injuries: [], suspensionMatches: 0 },
+    provenance: 'simulated'
+  };
+}
+
+function createClub({ id, name, shortName = name, country = 'Brasil', reputation = 1, finances = {} }) {
+  return {
+    id, name, shortName, country, reputation,
+    finances: {
+      balance: finances.balance ?? 0,
+      transferBudget: finances.transferBudget ?? 0,
+      weeklyWageBudget: finances.weeklyWageBudget ?? 0
+    },
+    objectives: [],
+    squadPlayerIds: [],
+    staff: [],
+    provenance: 'simulated'
+  };
+}
+
+function createCompetition({ id, name, country, season, format, clubIds = [], status = 'planned' }) {
+  return { id, name, country, season, format, clubIds: [...clubIds], status, fixtureIds: [], provenance: 'simulated' };
+}
+
+function createCareer({ id, managerName, club, season = 2026, startDate = `${season}-01-01` }) {
+  const clubRecord = createClub(club);
+  return {
+    schemaVersion: SAVE_SCHEMA_VERSION,
+    id,
+    name: `${managerName} — ${clubRecord.name}`,
+    createdAt: new Date().toISOString(),
+    manager: { id: `${id}-manager`, name: managerName, reputation: 1, licenses: [], history: [] },
+    currentClubId: clubRecord.id,
+    world: { season, currentDate: startDate, week: 1 },
+    clubs: [clubRecord],
+    players: [],
+    competitions: [],
+    fixtures: [],
+    news: [],
+    tactics: {}
+  };
+}
+
+
+// src/data/demoCareer.js
+
+const CLUBS = [
+  ['clube-demo-01', 'Aurora do Vale FC', 'Aurora'],
+  ['clube-demo-02', 'Atlético Serrano', 'Serrano'],
+  ['clube-demo-03', 'União Portuária', 'Portuária'],
+  ['clube-demo-04', 'Real das Palmeiras', 'Real Palmeiras'],
+  ['clube-demo-05', 'Esportivo Central', 'Central'],
+  ['clube-demo-06', 'Ferroviário do Norte', 'Ferroviário'],
+  ['clube-demo-07', 'Grêmio da Serra Azul', 'Serra Azul'],
+  ['clube-demo-08', 'Nacional do Litoral', 'Nacional']
+];
+const NAMES = ['Caio Nascimento','Ravi Moreira','Davi Costa','Enzo Lima','Lucas Tavares','Mateus Rocha','Pedro Alves','Breno Martins','Igor Santana','André Ribeiro','João Viana'];
+const POSITIONS = ['GOL','LD','ZAG','ZAG','LE','VOL','MC','MC','PD','PE','ATA'];
+const ATTRS = ['posicionamento','marcacao','passe','finalizacao','velocidade','desarme','visao','tecnica','cruzamento','drible','finalizacao'];
+
+function createDemoCareer(managerName = 'Treinador(a)') {
+  const career = createCareer({
+    id: `demo-${crypto.randomUUID()}`, managerName,
+    season: 2026, startDate: '2026-01-05',
+    club: { id: CLUBS[0][0], name: CLUBS[0][1], shortName: CLUBS[0][2], reputation: 1,
+      finances: { balance: 250000, transferBudget: 50000, weeklyWageBudget: 12000 } }
+  });
+  for (const [id, name, shortName] of CLUBS.slice(1)) {
+    career.clubs.push(createClub({ id, name, shortName, reputation: 1,
+      finances: { balance: 180000 + career.clubs.length * 17000, transferBudget: 30000, weeklyWageBudget: 10000 } }));
+  }
+  career.players = career.clubs.flatMap((club, clubIndex) => NAMES.map((name, i) => {
+    const skill = Math.max(5, Math.min(18, 8 + ((clubIndex * 3 + i * 2) % 8)));
+    return createPlayer({
+      id: `${club.id}-j${i + 1}`, name: clubIndex === 0 ? name : `${name.split(' ')[0]} ${['Azevedo','Pereira','Lopes','Farias','Mendes','Barbosa','Cardoso','Freitas'][((clubIndex + i) % 8)]}`,
+      age: 19 + ((clubIndex + i * 3) % 14), position: POSITIONS[i], clubId: club.id,
+      attributes: Object.fromEntries([ATTRS[i], 'resistencia', 'decisoes'].map((key) => [key, skill])), potential: Math.min(20, skill + 3)
+    });
+  }));
+  career.clubs.forEach((club) => { club.squadPlayerIds = career.players.filter((p) => p.clubId === club.id).map((p) => p.id); });
+  const competition = createCompetition({ id: 'liga-demo-2026', name: 'Liga Nacional de Demonstração', country: 'Brasil', season: 2026,
+    format: 'turno único · 8 clubes', clubIds: career.clubs.map((club) => club.id), status: 'active' });
+  const rotating = [...competition.clubIds];
+  career.fixtures = [];
+  for (let round = 1; round <= rotating.length - 1; round++) {
+    for (let i = 0; i < rotating.length / 2; i++) {
+      let home = rotating[i], away = rotating[rotating.length - 1 - i];
+      if ((round + i) % 2) [home, away] = [away, home];
+      career.fixtures.push({ id: `${competition.id}-r${round}-m${i + 1}`, competitionId: competition.id,
+        round, date: addDemoDays(career.world.currentDate, (round - 1) * 7), homeClubId: home, awayClubId: away,
+        played: false, homeGoals: null, awayGoals: null, events: [] });
+    }
+    rotating.splice(1, 0, rotating.pop());
+  }
+  competition.fixtureIds = career.fixtures.map((fixture) => fixture.id);
+  career.competitions = [competition];
+  career.tactics = { formation: '4-3-3', mentality: 'Equilibrada', style: 'Jogo apoiado' };
+  career.world.round = 1;
+  career.world.seasonEnded = false;
+  return career;
+}
+
+function addDemoDays(date, count) {
+  const d = new Date(`${date}T12:00:00Z`); d.setUTCDate(d.getUTCDate() + count);
+  return d.toISOString().slice(0, 10);
+}
+
+
+// src/domain/validateCareer.js
+
+const isRecord = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
+const isDate = (value) => typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) && !Number.isNaN(Date.parse(`${value}T00:00:00Z`));
+
+function validateCareer(career) {
+  const errors = [];
+  if (!isRecord(career)) return ['A carreira precisa ser um objeto.'];
+  if (career.schemaVersion !== SAVE_SCHEMA_VERSION) errors.push(`Versão de carreira não suportada: ${career.schemaVersion}.`);
+  for (const key of ['id', 'name', 'createdAt', 'currentClubId']) {
+    if (typeof career[key] !== 'string' || !career[key].trim()) errors.push(`Campo obrigatório inválido: ${key}.`);
+  }
+  if (!isRecord(career.manager) || !career.manager.id || !career.manager.name) errors.push('Treinador inválido ou incompleto.');
+  if (!isRecord(career.world) || !Number.isInteger(career.world.season) || !isDate(career.world.currentDate) || !Number.isInteger(career.world.week) || career.world.week < 1) errors.push('Calendário da carreira inválido.');
+  for (const key of ['clubs', 'players', 'competitions', 'fixtures', 'news']) if (!Array.isArray(career[key])) errors.push(`A coleção ${key} precisa ser uma lista.`);
+  if (errors.length) return errors;
+
+  const clubIds = new Set();
+  for (const club of career.clubs) {
+    if (!isRecord(club) || typeof club.id !== 'string' || !club.id || !club.name) { errors.push('Clube inválido ou sem identificador/nome.'); continue; }
+    if (clubIds.has(club.id)) errors.push(`ID de clube duplicado: ${club.id}.`);
+    clubIds.add(club.id);
+    if (!isRecord(club.finances) || ['balance', 'transferBudget', 'weeklyWageBudget'].some((key) => !Number.isFinite(club.finances[key]))) errors.push(`Finanças inválidas no clube ${club.id}.`);
+    if (!Array.isArray(club.squadPlayerIds)) errors.push(`Lista de elenco inválida no clube ${club.id}.`);
+  }
+  if (!clubIds.has(career.currentClubId)) errors.push(`Clube atual não encontrado: ${career.currentClubId}.`);
+
+  const playerIds = new Set();
+  for (const player of career.players) {
+    if (!isRecord(player) || typeof player.id !== 'string' || !player.id || !player.name) { errors.push('Jogador inválido ou sem identificador/nome.'); continue; }
+    if (playerIds.has(player.id)) errors.push(`ID de jogador duplicado: ${player.id}.`);
+    playerIds.add(player.id);
+    if (!Number.isInteger(player.age) || player.age < 15 || player.age > 60) errors.push(`Idade inválida do jogador ${player.id}.`);
+    if (!PLAYER_POSITIONS.includes(player.position)) errors.push(`Posição inválida do jogador ${player.id}.`);
+    if (!clubIds.has(player.clubId)) errors.push(`Clube não encontrado para o jogador ${player.id}.`);
+    if (!isRecord(player.attributes)) errors.push(`Atributos inválidos do jogador ${player.id}.`);
+    else for (const key of PLAYER_ATTRIBUTES) if (!Number.isFinite(player.attributes[key]) || player.attributes[key] < ATTRIBUTE_MIN || player.attributes[key] > ATTRIBUTE_MAX) errors.push(`Atributo ${key} fora de ${ATTRIBUTE_MIN}–${ATTRIBUTE_MAX} no jogador ${player.id}.`);
+    if (!Number.isFinite(player.condition) || player.condition < 0 || player.condition > 100) errors.push(`Condição inválida do jogador ${player.id}.`);
+    if (!Number.isFinite(player.morale) || player.morale < 0 || player.morale > 100) errors.push(`Moral inválida do jogador ${player.id}.`);
+    if (!isRecord(player.contract) || !Number.isFinite(player.contract.weeklyWage) || player.contract.weeklyWage < 0) errors.push(`Contrato inválido do jogador ${player.id}.`);
+  }
+  for (const club of career.clubs) if (Array.isArray(club.squadPlayerIds)) {
+    const seen = new Set();
+    for (const id of club.squadPlayerIds) {
+      if (seen.has(id)) errors.push(`Jogador ${id} aparece duas vezes no elenco de ${club.id}.`);
+      seen.add(id);
+      const player = career.players.find((entry) => entry.id === id);
+      if (!player) errors.push(`Jogador ${id} listado no elenco de ${club.id}, mas não existe.`);
+      else if (player.clubId !== club.id) errors.push(`Jogador ${id} está vinculado a ${player.clubId}, não a ${club.id}.`);
+    }
+  }
+
+  const competitionIds = new Set();
+  for (const competition of career.competitions) {
+    if (!isRecord(competition) || !competition.id || !competition.name || !Array.isArray(competition.clubIds) || !Array.isArray(competition.fixtureIds)) { errors.push('Competição inválida ou incompleta.'); continue; }
+    if (competitionIds.has(competition.id)) errors.push(`ID de competição duplicado: ${competition.id}.`);
+    competitionIds.add(competition.id);
+    for (const id of competition.clubIds) if (!clubIds.has(id)) errors.push(`Clube ${id} não encontrado na competição ${competition.id}.`);
+  }
+  const fixtureIds = new Set();
+  for (const fixture of career.fixtures) {
+    if (!isRecord(fixture) || !fixture.id || !fixture.homeClubId || !fixture.awayClubId) { errors.push('Partida inválida ou incompleta.'); continue; }
+    if (fixtureIds.has(fixture.id)) errors.push(`ID de partida duplicado: ${fixture.id}.`);
+    fixtureIds.add(fixture.id);
+    if (!clubIds.has(fixture.homeClubId) || !clubIds.has(fixture.awayClubId) || fixture.homeClubId === fixture.awayClubId) errors.push(`Mandantes/visitantes inválidos na partida ${fixture.id}.`);
+  }
+  return errors;
+}
+
+function assertValidCareer(career) {
+  const errors = validateCareer(career);
+  if (errors.length) throw new AggregateError(errors.map((error) => new Error(error)), 'Carreira inválida.');
+  return career;
+}
+
+
+// src/persistence/saveFormat.js
+
+
+function makeSave(career, savedAt = new Date().toISOString()) {
+  assertValidCareer(career);
+  return { id: career.id, schemaVersion: SAVE_SCHEMA_VERSION, savedAt, career: structuredClone(career) };
+}
+
+function migrateSave(input) {
+  if (!input || typeof input !== 'object') throw new TypeError('Save vazio ou inválido.');
+  let save = structuredClone(input);
+  // V0 era o formato experimental em que a carreira ficava diretamente no campo "data".
+  if ((save.schemaVersion === undefined || save.schemaVersion === 0) && save.data) {
+    save = { id: save.data.id, schemaVersion: 1, savedAt: save.savedAt ?? new Date().toISOString(), career: save.data };
+    save.career.schemaVersion = 1;
+  }
+  if (save.schemaVersion !== SAVE_SCHEMA_VERSION) throw new Error(`Não há migração disponível para save v${save.schemaVersion}.`);
+  if (!save.career) throw new TypeError('Save sem carreira.');
+  assertValidCareer(save.career);
+  if (save.id !== save.career.id) throw new Error('ID do save não corresponde ao ID da carreira.');
+  return save;
+}
+
+
+// src/persistence/indexedDbRepository.js
+
+const DB_NAME = 'football-manager-hibrido';
+const DB_VERSION = 1;
+const STORE_NAME = 'careers';
+
+class IndexedDbRepository {
+  constructor(indexedDBImpl = globalThis.indexedDB) {
+    if (!indexedDBImpl) throw new Error('IndexedDB não está disponível neste navegador.');
+    this.indexedDB = indexedDBImpl;
+    this.dbPromise = null;
+  }
+
+  open() {
+    if (this.dbPromise) return this.dbPromise;
+    this.dbPromise = new Promise((resolve, reject) => {
+      const request = this.indexedDB.open(DB_NAME, DB_VERSION);
+      request.onupgradeneeded = () => {
+        const db = request.result;
+        if (!db.objectStoreNames.contains(STORE_NAME)) db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+      };
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => reject(request.error ?? new Error('Não foi possível abrir o banco local.'));
+      request.onblocked = () => reject(new Error('Atualização do banco local bloqueada por outra aba.'));
+    });
+    return this.dbPromise;
+  }
+
+  async save(career) {
+    const save = makeSave(career);
+    const db = await this.open();
+    await this.#request(db, 'readwrite', (store) => store.put(save));
+    return save;
+  }
+
+  async load(id) {
+    const db = await this.open();
+    const record = await this.#request(db, 'readonly', (store) => store.get(id));
+    return record ? migrateSave(record).career : null;
+  }
+
+  async list() {
+    const db = await this.open();
+    const records = await this.#request(db, 'readonly', (store) => store.getAll());
+    return records.map(migrateSave).map(({ id, savedAt, career }) => ({ id, savedAt, name: career.name }));
+  }
+
+  async delete(id) {
+    const db = await this.open();
+    await this.#request(db, 'readwrite', (store) => store.delete(id));
+  }
+
+  #request(db, mode, makeRequest) {
+    return new Promise((resolve, reject) => {
+      const transaction = db.transaction(STORE_NAME, mode);
+      const request = makeRequest(transaction.objectStore(STORE_NAME));
+      let result;
+      request.onsuccess = () => { result = request.result; };
+      request.onerror = () => reject(request.error ?? new Error('Operação de save falhou.'));
+      transaction.oncomplete = () => resolve(result);
+      transaction.onerror = () => reject(transaction.error ?? new Error('Operação de save falhou.'));
+      transaction.onabort = () => reject(transaction.error ?? new Error('Operação de save cancelada.'));
+    });
+  }
+}
+
+
+// src/domain/season.js
+function calculateStandings(career, competitionId = career.competitions[0]?.id) {
+  const competition = career.competitions.find((item) => item.id === competitionId);
+  if (!competition) return [];
+  const rows = competition.clubIds.map((clubId) => {
+    const club = career.clubs.find((item) => item.id === clubId);
+    return { clubId, name: club?.shortName ?? club?.name ?? clubId, played: 0, wins: 0, draws: 0, losses: 0, gf: 0, ga: 0, points: 0 };
+  });
+  const byId = new Map(rows.map((row) => [row.clubId, row]));
+  for (const match of career.fixtures.filter((item) => item.competitionId === competition.id && item.played)) {
+    const home = byId.get(match.homeClubId), away = byId.get(match.awayClubId);
+    if (!home || !away) continue;
+    home.played++; away.played++; home.gf += match.homeGoals; home.ga += match.awayGoals; away.gf += match.awayGoals; away.ga += match.homeGoals;
+    if (match.homeGoals > match.awayGoals) { home.wins++; home.points += 3; away.losses++; }
+    else if (match.homeGoals < match.awayGoals) { away.wins++; away.points += 3; home.losses++; }
+    else { home.draws++; away.draws++; home.points++; away.points++; }
+  }
+  return rows.sort((a, b) => b.points - a.points || (b.gf - b.ga) - (a.gf - a.ga) || b.gf - a.gf || a.name.localeCompare(b.name));
+}
+
+function simulateNextRound(career, random = Math.random) {
+  if (career.world.seasonEnded) return { played: 0, message: 'A temporada já terminou.' };
+  const competition = career.competitions.find((item) => item.status === 'active');
+  if (!competition) return { played: 0, message: 'Nenhuma competição ativa.' };
+  const round = career.world.round ?? 1;
+  const matches = career.fixtures.filter((item) => item.competitionId === competition.id && item.round === round && !item.played);
+  if (!matches.length) return { played: 0, message: 'Não há partidas para esta rodada.' };
+  for (const match of matches) {
+    match.homeGoals = scoreFor(career, match.homeClubId, match.awayClubId, true, random);
+    match.awayGoals = scoreFor(career, match.awayClubId, match.homeClubId, false, random);
+    match.played = true;
+    match.events = [];
+  }
+  for (const player of career.players) player.condition = Math.max(45, player.condition - (player.clubId === career.currentClubId ? 9 : 5));
+  career.world.week++;
+  career.world.currentDate = addDays(career.world.currentDate, 7);
+  const nextRound = round + 1;
+  if (career.fixtures.some((item) => item.competitionId === competition.id && item.round === nextRound)) career.world.round = nextRound;
+  else { career.world.seasonEnded = true; competition.status = 'completed'; }
+  return { played: matches.length, message: career.world.seasonEnded ? 'Última rodada concluída: temporada encerrada!' : `Rodada ${round} concluída.` };
+}
+
+function scoreFor(career, clubId, opponentId, isHome, random) {
+  const squad = career.players.filter((player) => player.clubId === clubId);
+  const opponent = career.players.filter((player) => player.clubId === opponentId);
+  const average = (players) => players.length ? players.reduce((sum, player) => sum + Object.values(player.attributes).reduce((a, value) => a + value, 0) / Object.keys(player.attributes).length, 0) / players.length : 10;
+  const own = average(squad), rival = average(opponent);
+  const tacticBonus = clubId === career.currentClubId ? ({ 'Ofensiva': .14, 'Equilibrada': .05, 'Defensiva': -.08 }[career.tactics?.mentality] ?? 0) : 0;
+  const expected = Math.max(.15, Math.min(2.8, 1.1 + (own - rival) * .13 + (isHome ? .25 : 0) + tacticBonus));
+  const roll = random();
+  return Math.min(6, Math.floor(roll * roll * expected * 2.7));
+}
+function addDays(date, count) { const d = new Date(`${date}T12:00:00Z`); d.setUTCDate(d.getUTCDate() + count); return d.toISOString().slice(0, 10); }
+
+
+// src/ui/render.js
+
+function renderApp(root, { careers, currentCareer, message, onNew, onSave, onLoad, onDelete, onAdvance, onTactic, onTab, activeTab }) {
+  const status = message ? `<p class="notice" role="status">${escapeHtml(message)}</p>` : '';
+  if (!currentCareer) {
+    const rows = careers.length ? careers.map((item) => `<li><div><b>${escapeHtml(item.name)}</b><small>Salva em ${new Date(item.savedAt).toLocaleString('pt-BR')}</small></div><div class="row-actions"><button data-action="load" data-id="${escapeHtml(item.id)}">Abrir</button><button class="danger" data-action="delete" data-id="${escapeHtml(item.id)}">Excluir</button></div></li>`).join('') : '<li class="muted">Nenhum save neste navegador.</li>';
+    root.innerHTML = `<main class="shell landing"><header class="top"><span class="brand-mark">CM</span><div><p class="eyebrow">MANAGER DE BOLSO · PROJETO ORIGINAL</p><h1>Legado Manager</h1></div></header><p class="intro">Um simulador de futebol inspirado na era dos managers clássicos: foco em elenco, escolhas e temporadas que pedem “só mais uma rodada”. Clubes e atletas desta versão são fictícios.</p>${status}<section class="panel hero"><p class="eyebrow">COMECE SUA CARREIRA</p><h2>Do banco de reservas ao topo.</h2><p>Assuma o Aurora do Vale, monte seu time e dispute uma liga de demonstração. A carreira fica salva neste navegador.</p><label class="field-label" for="managerName">Nome do treinador</label><input id="managerName" maxlength="32" placeholder="Ex.: Bruno" value=""><button class="primary wide" data-action="new">Começar carreira <span>→</span></button></section><section class="panel"><div class="section-title"><div><p class="eyebrow">NESTE DISPOSITIVO</p><h2>Carreiras salvas</h2></div><span class="count">${careers.length}</span></div><ul class="save-list">${rows}</ul></section><footer>Dados fictícios · Save local neste navegador</footer></main>`;
+    root.querySelector('[data-action="new"]')?.addEventListener('click', () => onNew(root.querySelector('#managerName').value.trim() || 'Treinador(a)'));
+    root.querySelectorAll('[data-action="load"]').forEach((button) => button.addEventListener('click', () => onLoad(button.dataset.id)));
+    root.querySelectorAll('[data-action="delete"]').forEach((button) => button.addEventListener('click', () => onDelete(button.dataset.id)));
+    return;
+  }
+
+  const career = currentCareer;
+  const tab = activeTab ?? 'overview';
+  const competition = career.competitions[0];
+  const standings = calculateStandings(career, competition?.id);
+  const round = career.world.round ?? 1;
+  const fixtures = career.fixtures.filter((f) => f.competitionId === competition?.id && f.round === round);
+  const ownNext = fixtures.find((f) => f.homeClubId === career.currentClubId || f.awayClubId === career.currentClubId);
+  const myClub = career.clubs.find((c) => c.id === career.currentClubId);
+  const clubById = (id) => career.clubs.find((c) => c.id === id)?.shortName ?? '—';
+  const content = tab === 'squad' ? renderSquad(career) : tab === 'table' ? renderTable(standings, career.currentClubId) : tab === 'fixtures' ? renderFixtures(career, competition, clubById) : renderOverview(career, competition, myClub, ownNext, fixtures, round, clubById, standings);
+  root.innerHTML = `<div class="game-shell"><header class="game-header"><div><p class="eyebrow">${escapeHtml(competition?.name ?? 'CARREIRA')}</p><h1>${escapeHtml(myClub?.shortName ?? 'Meu clube')}</h1></div><button class="save-icon" data-action="save" aria-label="Salvar carreira">Salvar</button></header><div class="season-strip"><span>⚽ ${career.world.season}</span><span>Rodada ${Math.min(round, competition?.clubIds.length - 1 || 1)} de ${(competition?.clubIds.length ?? 2) - 1}</span><span>${formatDate(career.world.currentDate)}</span></div>${status}<main class="game-content">${content}</main><nav class="bottom-nav" aria-label="Menu principal"><button data-tab="overview" class="${tab === 'overview' ? 'active' : ''}"><span>⌂</span>Visão geral</button><button data-tab="squad" class="${tab === 'squad' ? 'active' : ''}"><span>♟</span>Elenco</button><button data-tab="table" class="${tab === 'table' ? 'active' : ''}"><span>▤</span>Tabela</button><button data-tab="fixtures" class="${tab === 'fixtures' ? 'active' : ''}"><span>▦</span>Jogos</button></nav></div>`;
+  root.querySelector('[data-action="save"]')?.addEventListener('click', onSave);
+  root.querySelector('[data-action="advance"]')?.addEventListener('click', onAdvance);
+  root.querySelectorAll('[data-tab]').forEach((button) => button.addEventListener('click', () => onTab(button.dataset.tab)));
+  root.querySelectorAll('[data-tactic]').forEach((select) => select.addEventListener('change', () => onTactic(select.dataset.tactic, select.value)));
+  root.querySelector('[data-action="menu"]')?.addEventListener('click', () => { if (confirm('Voltar ao menu inicial? Salve antes de sair para garantir seu progresso.')) onTab('menu'); });
+}
+
+function renderOverview(career, competition, club, next, fixtures, round, clubById, standings) {
+  const rank = standings.findIndex((r) => r.clubId === career.currentClubId) + 1;
+  const nextCard = next ? `<div class="match-card"><div class="match-meta">LIGA DE DEMONSTRAÇÃO · RODADA ${round}</div><div class="versus"><div><span class="club-crest">${clubById(next.homeClubId).slice(0,2).toUpperCase()}</span><b>${escapeHtml(clubById(next.homeClubId))}</b></div><strong>VS</strong><div><span class="club-crest">${clubById(next.awayClubId).slice(0,2).toUpperCase()}</span><b>${escapeHtml(clubById(next.awayClubId))}</b></div></div><div class="match-bottom"><span>${next.homeClubId === career.currentClubId ? '🏟 Em casa' : '✈️ Fora'}</span><span>${formatDate(next.date)}</span></div></div>` : `<div class="panel success"><b>🏆 Temporada encerrada</b><p>Veja a classificação final e comece uma nova carreira para jogar outra temporada.</p></div>`;
+  return `<section class="welcome"><div><p class="eyebrow">BEM-VINDO AO BANCO, ${escapeHtml(career.manager.name.toUpperCase())}</p><h2>É hora de fazer história.</h2></div><span class="weather">☀️</span></section><div class="dashboard-stats"><div><small>POSIÇÃO</small><b>${rank ? `${rank}º` : '—'}</b><span>na liga</span></div><div><small>PONTOS</small><b>${standings.find((r) => r.clubId === career.currentClubId)?.points ?? 0}</b><span>na temporada</span></div><div><small>ELENCO</small><b>${career.players.filter((p) => p.clubId === career.currentClubId).length}</b><span>jogadores</span></div></div><section class="section-block"><div class="section-title"><div><p class="eyebrow">PRÓXIMO COMPROMISSO</p><h3>${next ? 'Prepare o time' : 'Fim de temporada'}</h3></div><span class="count">${round}/${(competition?.clubIds.length ?? 2)-1}</span></div>${nextCard}</section><section class="section-block tactic-panel"><div class="section-title"><div><p class="eyebrow">PLANO DE JOGO</p><h3>Orientação tática</h3></div><span>⚙️</span></div><div class="select-row"><label>Formação<select data-tactic="formation"><option ${career.tactics.formation === '4-3-3'?'selected':''}>4-3-3</option><option ${career.tactics.formation === '4-4-2'?'selected':''}>4-4-2</option><option ${career.tactics.formation === '3-5-2'?'selected':''}>3-5-2</option></select></label><label>Mentalidade<select data-tactic="mentality"><option ${career.tactics.mentality === 'Defensiva'?'selected':''}>Defensiva</option><option ${career.tactics.mentality === 'Equilibrada'?'selected':''}>Equilibrada</option><option ${career.tactics.mentality === 'Ofensiva'?'selected':''}>Ofensiva</option></select></label></div></section><button class="primary wide advance" data-action="advance" ${career.world.seasonEnded?'disabled':''}>${career.world.seasonEnded?'Temporada concluída':'Avançar para a próxima rodada'} <span>→</span></button><p class="small-note">A simulação é instantânea; resultados e classificação ficam salvos na carreira.</p>`;
+}
+function renderSquad(career) {
+  const players = career.players.filter((p) => p.clubId === career.currentClubId).sort((a,b) => positionOrder(a.position)-positionOrder(b.position) || rating(b)-rating(a));
+  return `<div class="page-heading"><p class="eyebrow">CENTRO DE TREINAMENTO</p><h2>Meu elenco</h2><p>${players.length} jogadores · atributos de demonstração</p></div><div class="squad-list">${players.map((p,i)=>`<article class="player-row"><span class="player-number">${String(i+1).padStart(2,'0')}</span><span class="position-chip">${p.position}</span><div class="player-info"><b>${escapeHtml(p.name)}</b><small>${p.age} anos · ${p.condition}% condição</small></div><strong class="rating">${rating(p)}</strong></article>`).join('')}</div><p class="small-note">Notas calculadas a partir dos atributos fictícios; ainda não representam uma avaliação esportiva oficial.</p>`;
+}
+function renderTable(rows, clubId) { return `<div class="page-heading"><p class="eyebrow">LIGA NACIONAL DE DEMONSTRAÇÃO</p><h2>Classificação</h2><p>Temporada simulada · critérios: pontos, saldo e gols pró</p></div><div class="table-wrap"><table><thead><tr><th>#</th><th>Clube</th><th>J</th><th>V</th><th>E</th><th>D</th><th>SG</th><th>Pts</th></tr></thead><tbody>${rows.map((r,i)=>`<tr class="${r.clubId===clubId?'my-row':''}"><td>${i+1}</td><td>${escapeHtml(r.name)}</td><td>${r.played}</td><td>${r.wins}</td><td>${r.draws}</td><td>${r.losses}</td><td>${r.gf-r.ga}</td><td><b>${r.points}</b></td></tr>`).join('')}</tbody></table></div>`; }
+function renderFixtures(career, competition, clubById) { const groups = [...new Set(career.fixtures.map((f)=>f.round))]; return `<div class="page-heading"><p class="eyebrow">${escapeHtml(competition?.name ?? 'COMPETIÇÃO')}</p><h2>Calendário</h2><p>Turno único · todos os dados desta liga são fictícios</p></div>${groups.map((round)=>`<section class="round-block"><h3>Rodada ${round}</h3>${career.fixtures.filter((f)=>f.round===round).map((f)=>`<div class="fixture-row"><span>${escapeHtml(clubById(f.homeClubId))}</span><b>${f.played?`${f.homeGoals} — ${f.awayGoals}`:'vs'}</b><span>${escapeHtml(clubById(f.awayClubId))}</span></div>`).join('')}</section>`).join('')}`; }
+function positionOrder(pos) { return ({GOL:0,LD:1,ZAG:2,LE:3,VOL:4,MC:5,MEI:6,PD:7,PE:8,ATA:9})[pos] ?? 10; }
+function rating(p) { const values=Object.values(p.attributes); return Math.round(values.reduce((a,b)=>a+b,0)/values.length); }
+function formatDate(date) { return new Date(`${date}T12:00:00`).toLocaleDateString('pt-BR',{day:'2-digit',month:'short'}).replace('.',''); }
+function escapeHtml(value) { return String(value).replace(/[&<>"']/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+
+// src/app/main.js
+
+
+
+
+const root = document.querySelector('#app');
+const repository = new IndexedDbRepository();
+let careers = [];
+let currentCareer = null;
+let message = '';
+let activeTab = 'overview';
+
+async function refresh(note = '') {
+  message = note;
+  try { careers = await repository.list(); }
+  catch (error) { message = `Não foi possível ler os saves: ${error.message}`; }
+  render();
+}
+function render() {
+  renderApp(root, {
+    careers, currentCareer, message, activeTab,
+    onNew: (name) => { currentCareer = createDemoCareer(name); activeTab = 'overview'; message = 'Carreira iniciada. Salve para guardá-la neste navegador.'; render(); },
+    onSave: async () => { try { await repository.save(currentCareer); await refresh('Carreira salva neste navegador.'); } catch (error) { await refresh(`Falha ao salvar: ${error.message}`); } },
+    onLoad: async (id) => { try { currentCareer = await repository.load(id); activeTab = 'overview'; await refresh('Carreira carregada.'); } catch (error) { await refresh(`Falha ao carregar: ${error.message}`); } },
+    onDelete: async (id) => { try { await repository.delete(id); if (currentCareer?.id === id) currentCareer = null; await refresh('Save excluído deste navegador.'); } catch (error) { await refresh(`Falha ao excluir: ${error.message}`); } },
+    onAdvance: async () => {
+      const result = simulateNextRound(currentCareer);
+      if (result.played) {
+        message = `${result.message} ${result.played} partidas simuladas.`;
+        try { await repository.save(currentCareer); careers = await repository.list(); }
+        catch (error) { message += ` Atenção: falha ao salvar automaticamente (${error.message}).`; }
+      } else message = result.message;
+      render();
+    },
+    onTactic: (key, value) => { currentCareer.tactics[key] = value; message = 'Tática atualizada.'; render(); },
+    onTab: (tab) => { if (tab === 'menu') { currentCareer = null; activeTab = 'overview'; refresh('Carreira fechada.'); return; } activeTab = tab; message = ''; render(); }
+  });
+}
+refresh();
+
+</script></body>
+</html>
